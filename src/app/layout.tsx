@@ -1,6 +1,11 @@
+/**
+ * 전역 레이아웃을 정의하여 모든 페이지에 공통으로 적용. 
+ * 
+ */
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Sidebar from "../components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +21,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head />
+      <body className={inter.className}>
+        <div className="app-container">
+            <Sidebar />
+            <div className="main-content">
+              {children}
+            </div>
+          </div>
+      </body>
     </html>
   );
 }
